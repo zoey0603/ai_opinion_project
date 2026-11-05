@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+  <h1>文字分類 Classification</h1>
+  <p class="lead">將科技新聞文字自動分類成 AI 工具、情緒、新聞主題與風險類別，對應課堂文件中的 Text Classification 任務。</p>
+</section>
+
+<section class="section-card">
+  <h2>分類任務對應</h2>
+  <div class="stats-grid">
+    <article class="stat-card">
+      <div class="stat-label">工具分類</div>
+      <div class="stat-value">ChatGPT / Gemini / Claude / Other</div>
+      <p class="footer-note">依標題與內文主題相關度分類，不只看關鍵字。</p>
+    </article>
+    <article class="stat-card">
+      <div class="stat-label">情緒分類</div>
+      <div class="stat-value">正面 / 中性 / 負面</div>
+      <p class="footer-note">使用科技新聞規則式情緒詞庫。</p>
+    </article>
+    <article class="stat-card">
+      <div class="stat-label">新聞主題分類</div>
+      <div class="stat-value">產品、監管、資安、投資等</div>
+      <p class="footer-note">模擬新聞分類與客服分流的多類別分類。</p>
+    </article>
+  </div>
+</section>
+
+<section class="section-card">
+  <h2>輸入文字</h2>
+  <form method="post">
+    {% csrf_token %}
+    <div class="toolbar">
+      <div class="field">
+        <label for="title">標題</label>
+        <input id="title" name="title" type="text" value="{{ initial_title }}" placeholder="請輸入新聞標題">
+      </div>
+    </div>
+    <div class="field">
+      <label for="input_text">內文</label>
+      <textarea id="input_text" name="input_text" rows="8" placeholder="請輸入要分類的新聞文字">{{ initial_text }}</textarea>
+    </div>
+    <p style="margin-top:14px;"><button class="btn" type="submit">開始分類</button></p>
+  </form>
+</section>
+
+{% if result %}
+<section class="section-card">
+  <h2>分類結果</h2>
+  <div class="stats-grid">
+    <article class="stat-card"><div class="stat-label">AI 工具</div><div class="stat-value">{{ result.tool }}</div></article>
+    <article class="stat-card"><div class="stat-label">情緒</div><div class="stat-value">{{ result.sentiment }}</div></article>
+    <article class="stat-card"><div class="stat-label">新聞主題</div><div class="stat-value">{{ result.topic }}</div></article>
+    <article class="stat-card"><div class="stat-label">風險類別</div><div class="stat-value">{{ result.risk_type }}</div></article>
+    <article class="stat-card"><div class="stat-label">關鍵字</div><div class="stat-value">{{ result.keywords }}</div></article>
+  </div>
+  <div class="result-card">
+    <h3>判斷說明</h3>
+    <div style="white-space:pre-wrap;">{{ result.explanation }}</div>
+  </div>
+</section>
+
+<section class="section-card">
+  <h2>工具相關度分數</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>工具</th><th>相關度分數</th><th>是否相關</th><th>命中詞</th></tr></thead>
+      <tbody>
+        {% for tool, item in result.tool_relevance.items %}
+        <tr>
+          <td>{{ tool }}</td>
+          <td>{{ item.relevance_score }}</td>
+          <td>{{ item.is_relevant }}</td>
+          <td>{{ item.matched_terms|join:"、"|default:"無" }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section-card">
+  <h2>相似資料庫新聞</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>日期</th><th>工具</th><th>標題</th><th>連結</th></tr></thead>
+      <tbody>
+        {% for news in similar_news %}
+        <tr>
+          <td>{{ news.date|date:"Y-m-d" }}</td>
+          <td>{{ news.tool }}</td>
+          <td>{{ news.title }}</td>
+          <td><a href="{{ news.link }}" target="_blank">查看原文</a></td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="4">目前查無相似新聞</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+{% endif %}
+
+<section class="section-card">
+  <h2>分類紀錄</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>時間</th><th>工具</th><th>情緒</th><th>主題</th><th>風險</th><th>標題</th></tr></thead>
+      <tbody>
+        {% for record in recent_records %}
+        <tr>
+          <td>{{ record.created_at|date:"Y-m-d H:i" }}</td>
+          <td>{{ record.predicted_tool }}</td>
+          <td>{{ record.predicted_sentiment }}</td>
+          <td>{{ record.predicted_topic }}</td>
+          <td>{{ record.predicted_risk_type }}</td>
+          <td>{{ record.title|default:"未填標題" }}</td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="6">目前尚無分類紀錄</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+{% endblock %}

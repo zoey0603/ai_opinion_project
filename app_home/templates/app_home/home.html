@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+  <h1>{{ project_title }}</h1>
+  <p class="lead">{{ intro }}</p>
+</section>
+
+{% if update_error %}
+<section class="section-card">
+  <p style="color:#b91c1c;">{{ update_error }}</p>
+</section>
+{% endif %}
+
+<section class="section-card">
+  <h2>資料庫概況</h2>
+  <div class="stats-grid">
+    <article class="stat-card">
+      <div class="stat-label">資料庫新聞總筆數</div>
+      <div class="stat-value">{{ total_news }}</div>
+      <p class="footer-note">包含 Other，保留用於查詢與人工複核。</p>
+    </article>
+    <article class="stat-card">
+      <div class="stat-label">AI 工具分析筆數</div>
+      <div class="stat-value">{{ analysis_news_count }}</div>
+      <p class="footer-note">僅統計 ChatGPT / Gemini / Claude。</p>
+    </article>
+    <article class="stat-card">
+      <div class="stat-label">ChatGPT 筆數</div>
+      <div class="stat-value">{{ tool_counts.ChatGPT }}</div>
+    </article>
+    <article class="stat-card">
+      <div class="stat-label">Gemini 筆數</div>
+      <div class="stat-value">{{ tool_counts.Gemini }}</div>
+    </article>
+    <article class="stat-card">
+      <div class="stat-label">Claude 筆數</div>
+      <div class="stat-value">{{ tool_counts.Claude }}</div>
+    </article>
+    <article class="stat-card">
+      <div class="stat-label">Other 筆數</div>
+      <div class="stat-value">{{ tool_counts.Other }}</div>
+      <p class="footer-note">主題不屬於三個工具，不進分析分數。</p>
+    </article>
+    <article class="stat-card">
+      <div class="stat-label">最後更新時間</div>
+      <div class="stat-value">{% if update_log %}{{ update_log.last_updated|date:"Y-m-d H:i" }}{% else %}尚無紀錄{% endif %}</div>
+    </article>
+    <article class="stat-card">
+      <div class="stat-label">自動更新狀態</div>
+      <div class="stat-value">{% if update_log %}{{ update_log.status }}{% else %}尚無紀錄{% endif %}</div>
+      <p class="footer-note">{% if update_log %}{{ update_log.message }}{% else %}開啟首頁時會檢查今日是否已更新。{% endif %}</p>
+    </article>
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,478 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+  .hot-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 14px 0;
+  }
+  .hot-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 10px 14px;
+    border-radius: 12px;
+    border: 1px solid #bfdbfe;
+    background: #eff6ff;
+    color: #1d4ed8;
+    font-weight: 800;
+  }
+  .hot-action.primary {
+    background: linear-gradient(135deg, #2563eb, #3b82f6);
+    color: #fff;
+    border-color: #2563eb;
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.18);
+  }
+  .event-list {
+    display: grid;
+    gap: 18px;
+  }
+  .event-card {
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: #fff;
+    overflow: hidden;
+  }
+  .event-head {
+    display: grid;
+    grid-template-columns: minmax(140px, 1.2fr) repeat(4, minmax(90px, 0.7fr));
+    gap: 12px;
+    padding: 16px 18px;
+    background: #f8fbff;
+    border-bottom: 1px solid var(--line);
+  }
+  .event-main {
+    padding: 18px;
+    display: grid;
+    gap: 16px;
+  }
+  .rag-flow {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 16px;
+  }
+  .rag-step, .evidence-card {
+    border: 1px solid #dbeafe;
+    border-radius: 12px;
+    background: #f8fbff;
+    padding: 14px;
+  }
+  .rag-step strong {
+    display: block;
+    color: #1e3a8a;
+    margin-bottom: 4px;
+  }
+  .event-field-label {
+    color: var(--muted);
+    font-size: 0.86rem;
+    font-weight: 800;
+    margin-bottom: 4px;
+  }
+  .event-field-value {
+    font-weight: 800;
+    color: #0f172a;
+    word-break: break-word;
+  }
+  .event-date {
+    font-size: 1.1rem;
+    color: #1e3a8a;
+  }
+  .badge-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .keyword-badge, .source-badge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 30px;
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: #eef2ff;
+    color: #3730a3;
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
+  .source-badge {
+    background: #ecfeff;
+    color: #155e75;
+  }
+  .reason-box {
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    line-height: 1.85;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 14px 16px;
+  }
+  .rag-query {
+    background: #fefce8;
+    border: 1px solid #fde68a;
+    border-radius: 12px;
+    padding: 12px 14px;
+    color: #713f12;
+    font-weight: 700;
+    word-break: break-word;
+  }
+  .evidence-grid {
+    display: grid;
+    gap: 12px;
+  }
+  .evidence-card {
+    background: #fff;
+  }
+  .evidence-title {
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 6px;
+  }
+  .evidence-meta {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+  }
+  .evidence-snippet {
+    color: #334155;
+    line-height: 1.75;
+    margin-bottom: 10px;
+  }
+  .rag-question-panel {
+    display: grid;
+    gap: 16px;
+  }
+  .rag-form {
+    display: grid;
+    grid-template-columns: minmax(240px, 1fr) minmax(120px, 180px) auto;
+    gap: 10px;
+    align-items: end;
+  }
+  .rag-form select, .rag-form input {
+    min-height: 44px;
+  }
+  .rag-form button, .rag-form a {
+    min-height: 44px;
+  }
+  .rag-grid {
+    display: grid;
+    grid-template-columns: minmax(240px, 0.85fr) minmax(0, 1.15fr);
+    gap: 16px;
+  }
+  .rag-info-box {
+    border: 1px solid var(--line);
+    background: #fff;
+    border-radius: 12px;
+    padding: 14px;
+  }
+  .stat-line {
+    padding: 10px 0;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  .stat-line:last-child {
+    border-bottom: 0;
+  }
+  .query-card {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: #fff;
+    padding: 14px;
+    display: grid;
+    gap: 10px;
+  }
+  .query-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    color: var(--muted);
+    font-size: 0.92rem;
+  }
+  .news-list {
+    margin: 10px 0 0;
+    padding-left: 20px;
+  }
+  .news-list li {
+    margin-bottom: 8px;
+  }
+  @media (max-width: 900px) {
+    .event-head {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .rag-flow {
+      grid-template-columns: 1fr;
+    }
+    .rag-form, .rag-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 640px) {
+    .hot-action {
+      width: 100%;
+    }
+    .event-head {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<section class="hero">
+  <h1>AI 工具爆紅原因分析</h1>
+  <p class="lead">從聲量趨勢延伸，先檢索當日代表新聞作為證據，再由 Ollama 根據證據生成爆紅原因分析。</p>
+</section>
+
+<section class="section-card">
+  <h2>RAG 分析模式</h2>
+  <p>目前頁面優先顯示資料庫已儲存的 RAG 分析；沒有儲存資料時，會先使用快速 fallback 文字。背景分析會從 NewsArticle 檢索代表新聞，再交給 Ollama 生成原因。</p>
+  <div class="rag-flow">
+    <div class="rag-step"><strong>1. Retrieval</strong><span>依工具、日期與聲量峰值，從資料庫取出當日代表新聞。</span></div>
+    <div class="rag-step"><strong>2. Augmentation</strong><span>把標題、關鍵字、摘要與連結組成可引用的證據上下文。</span></div>
+    <div class="rag-step"><strong>3. Generation</strong><span>Ollama 只根據檢索證據生成爆紅原因、背景與觀察重點。</span></div>
+  </div>
+  <div class="footer-note">
+    <p>背景狀態：{{ job_state.message }}</p>
+    {% if job_state.started_at %}<p>開始時間：{{ job_state.started_at }}</p>{% endif %}
+    {% if job_state.finished_at %}<p>完成時間：{{ job_state.finished_at }}</p>{% endif %}
+  </div>
+  <div class="hot-actions">
+    <a class="hot-action primary" href="{% url 'app_hot_event:home' %}?ai_job=1">背景執行 RAG + Ollama 分析</a>
+  </div>
+  {% if save_result %}
+    <p class="footer-note">已儲存快速 fallback 分析；若事件已存在，會更新基本統計與保留既有原因。</p>
+  {% endif %}
+  {% if start_ai_job %}
+    <p class="footer-note">已送出 Ollama 背景分析工作。重新整理頁面即可查看目前進度與已更新結果。</p>
+  {% endif %}
+</section>
+
+<section class="section-card">
+  <h2>自由檢索 RAG 問答</h2>
+  <p>輸入任意問題後，系統會先從最近一星期的 NewsArticle 資料庫檢索統計與新聞證據，再由 Ollama 在背景生成回答並儲存。</p>
+  <div class="rag-question-panel">
+    <form class="rag-form" method="get" action="{% url 'app_hot_event:home' %}">
+      <div>
+        <label for="q">自由輸入問題</label>
+        <input id="q" name="q" type="text" value="{{ free_question }}" placeholder="例如：最近一星期最多討論度的 AI 工具是哪一個？">
+      </div>
+      <div>
+        <label for="tool">工具篩選</label>
+        <select id="tool" name="tool">
+          <option value="ALL" {% if free_tool == "ALL" %}selected{% endif %}>ALL</option>
+          {% for tool in tools %}
+            <option value="{{ tool }}" {% if free_tool == tool %}selected{% endif %}>{{ tool }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <button class="btn" type="submit">背景送出 Ollama RAG</button>
+    </form>
+
+    {% if free_question %}
+      <p class="footer-note">已送出問題：「{{ free_question }}」。Ollama 會在背景生成回答，重新整理頁面即可查看狀態。</p>
+    {% endif %}
+
+    <div>
+      <div class="event-field-label">最近 RAG 問答結果</div>
+      <div class="event-list">
+        {% for query in recent_rag_queries %}
+        <article class="query-card">
+          <div class="event-field-value">{{ query.question }}</div>
+          <div class="query-meta">
+            <span>狀態：{{ query.status }}</span>
+            <span>工具：{{ query.tool }}</span>
+            <span>期間：{{ query.start_date|default:"待檢索" }} 至 {{ query.end_date|default:"待檢索" }}</span>
+            <span>更新：{{ query.updated_at|date:"Y-m-d H:i" }}</span>
+          </div>
+          {% if query.message %}<p class="footer-note">{{ query.message }}</p>{% endif %}
+          {% if query.stats_text %}
+            <details>
+              <summary>展開檢索統計</summary>
+              <div class="reason-box">{{ query.stats_text }}</div>
+            </details>
+          {% endif %}
+          {% if query.retrieved_context %}
+            <details>
+              <summary>展開檢索新聞證據</summary>
+              <div class="reason-box">{{ query.retrieved_context }}</div>
+            </details>
+          {% endif %}
+          {% if query.answer %}
+            <div>
+              <div class="event-field-label">Ollama 回答</div>
+              <div class="reason-box">{{ query.answer }}</div>
+            </div>
+          {% endif %}
+        </article>
+        {% empty %}
+          <p>目前尚無 RAG 問答結果。</p>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-card">
+  <h2>預設問題參考</h2>
+  <p>不知道要問什麼時，可以直接點以下問題送出背景 Ollama RAG 分析。這裡只顯示 Ollama 已儲存或正在處理的結果，不再用 fallback 充當回答。</p>
+  <div class="event-list">
+    {% for card in preset_query_cards %}
+    <article class="query-card">
+      <div class="event-field-value">{{ card.question }}</div>
+      <div class="hot-actions">
+        <a class="hot-action primary" href="{% url 'app_hot_event:home' %}?q={{ card.question|urlencode }}&tool=ALL">背景產生 Ollama 回答</a>
+      </div>
+      {% if card.latest %}
+        <div class="query-meta">
+          <span>狀態：{{ card.latest.status }}</span>
+          <span>更新：{{ card.latest.updated_at|date:"Y-m-d H:i" }}</span>
+          <span>期間：{{ card.latest.start_date|default:"待檢索" }} 至 {{ card.latest.end_date|default:"待檢索" }}</span>
+        </div>
+        {% if card.latest.message %}<p class="footer-note">{{ card.latest.message }}</p>{% endif %}
+        {% if card.latest.answer %}
+          <div class="reason-box">{{ card.latest.answer }}</div>
+        {% else %}
+          <p class="footer-note">Ollama 尚未完成回答，稍後重新整理即可查看。</p>
+        {% endif %}
+      {% else %}
+        <p class="footer-note">尚未產生 Ollama 回答。</p>
+      {% endif %}
+    </article>
+    {% empty %}
+      {% for key, question in preset_questions.items %}
+      <article class="query-card">
+        <div class="event-field-value">{{ question }}</div>
+        <div class="hot-actions">
+          <a class="hot-action primary" href="{% url 'app_hot_event:home' %}?q={{ question|urlencode }}&tool=ALL">背景產生 Ollama 回答</a>
+        </div>
+        <p class="footer-note">尚未產生 Ollama 回答。</p>
+      </article>
+      {% endfor %}
+    {% endfor %}
+  </div>
+</section>
+
+<section class="section-card">
+  <h2>爆紅事件總覽</h2>
+  <div class="stats-grid">
+    <article class="stat-card"><div class="stat-label">偵測事件數</div><div class="stat-value">{{ event_count }}</div></article>
+    <article class="stat-card"><div class="stat-label">最大爆紅工具</div><div class="stat-value">{{ biggest.tool|default:"目前查無資料" }}</div></article>
+    <article class="stat-card"><div class="stat-label">最大成長幅度</div><div class="stat-value">{% if biggest %}+{{ biggest.growth_count }} 篇{% else %}0{% endif %}</div></article>
+  </div>
+</section>
+
+<section class="section-card">
+  <h2>每日聲量折線圖</h2>
+  <div class="chart-wrap"><canvas id="hotTrendChart"></canvas></div>
+</section>
+
+<section class="section-card">
+  <h2>爆紅事件列表</h2>
+  <div class="event-list">
+    {% for event in events %}
+    <article class="event-card">
+      <div class="event-head">
+        <div>
+          <div class="event-field-label">日期</div>
+          <div class="event-field-value event-date">{{ event.event_date|date:"Y 年 m 月 d 日" }}</div>
+        </div>
+        <div>
+          <div class="event-field-label">工具</div>
+          <div class="event-field-value">{{ event.tool }}{% if event.is_peak_day %}<br><small>期間高峰日</small>{% endif %}</div>
+        </div>
+        <div>
+          <div class="event-field-label">今日篇數</div>
+          <div class="event-field-value">{{ event.today_count }}</div>
+        </div>
+        <div>
+          <div class="event-field-label">前日篇數</div>
+          <div class="event-field-value">{{ event.yesterday_count }}</div>
+        </div>
+        <div>
+          <div class="event-field-label">成長率</div>
+          <div class="event-field-value">{{ event.growth_rate }}%</div>
+        </div>
+      </div>
+      <div class="event-main">
+        <div>
+          <div class="event-field-label">熱門關鍵字</div>
+          <div class="badge-row">
+            {% for keyword in event.top_keywords_list %}
+              <span class="keyword-badge">{{ keyword }}</span>
+            {% empty %}
+              <span class="keyword-badge">目前查無資料</span>
+            {% endfor %}
+          </div>
+        </div>
+        <div>
+          <div class="event-field-label">分析來源</div>
+          <span class="source-badge">{{ event.reason_source|default:"即時計算" }}</span>
+        </div>
+        <div>
+          <div class="event-field-label">RAG 查詢</div>
+          <div class="rag-query">{{ event.rag_query }}</div>
+        </div>
+        <div>
+          <div class="event-field-label">Retrieval：檢索到的新聞證據</div>
+          <div class="evidence-grid">
+            {% for evidence in event.retrieved_context %}
+            <article class="evidence-card">
+              <div class="evidence-title">[{{ evidence.rank }}] {{ evidence.title }}</div>
+              <div class="evidence-meta">{{ evidence.date|date:"Y-m-d" }}｜{{ evidence.source }}｜{{ evidence.tool }}</div>
+              <div class="evidence-snippet">{{ evidence.snippet }}</div>
+              <div class="badge-row">
+                {% for keyword in evidence.keyword_list %}
+                  <span class="keyword-badge">{{ keyword }}</span>
+                {% empty %}
+                  <span class="keyword-badge">目前查無關鍵字</span>
+                {% endfor %}
+              </div>
+              <p style="margin-top:10px;"><a href="{{ evidence.link }}" target="_blank">查看原文</a></p>
+            </article>
+            {% empty %}
+              <p>目前查無檢索證據</p>
+            {% endfor %}
+          </div>
+        </div>
+        <div>
+          <div class="event-field-label">Generation：爆紅原因分析</div>
+          <div class="reason-box">{{ event.possible_reason }}</div>
+        </div>
+        <details>
+          <summary>展開完整代表新聞</summary>
+          <ul class="news-list">
+            {% for news in event.representative_news %}
+              <li>{{ news.date|date:"Y-m-d" }}｜{{ news.title }}｜<a href="{{ news.link }}" target="_blank">查看原文</a></li>
+            {% empty %}
+              <li>目前查無資料</li>
+            {% endfor %}
+          </ul>
+        </details>
+      </div>
+    </article>
+    {% empty %}
+      <p>目前查無資料</p>
+    {% endfor %}
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+new Chart(document.getElementById('hotTrendChart'), {
+  type: 'line',
+  data: {
+    labels: {{ chart_labels|safe }},
+    datasets: [
+      { label: 'ChatGPT', data: {{ chatgpt_data|safe }}, tension: 0.35, borderWidth: 3 },
+      { label: 'Gemini', data: {{ gemini_data|safe }}, tension: 0.35, borderWidth: 3 },
+      { label: 'Claude', data: {{ claude_data|safe }}, tension: 0.35, borderWidth: 3 }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: { y: { beginAtZero: true, ticks: { precision: 0 } } }
+  }
+});
+</script>
+{% endblock %}

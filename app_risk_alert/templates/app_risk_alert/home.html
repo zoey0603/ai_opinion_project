@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+  <h1>AI 工具風險警報器</h1>
+  <p class="lead">先用可調整風險詞庫找出疑似風險新聞，再由 Ollama 二次判斷是否真的屬於 ChatGPT、Gemini、Claude 的工具風險。</p>
+</section>
+
+<section class="section-card">
+  <h2>判斷模式</h2>
+  {% if use_ai %}
+    <p>目前已啟用 Ollama 二次判斷。系統會在背景處理尚未判斷的疑似風險新聞，頁面不需要一直等待。</p>
+    {% if max_new %}
+      <p>本次背景工作最多新增 {{ max_new }} 篇 Ollama 判斷，單篇等待上限 {{ ollama_timeout }} 秒。</p>
+    {% else %}
+      <p>本次背景工作會補完所有尚未有判斷紀錄的疑似風險新聞，單篇等待上限 {{ ollama_timeout }} 秒。已經判斷過的新聞會直接讀取快取。</p>
+    {% endif %}
+    {% if retry_fallback %}
+      <p class="footer-note">本次已啟用重跑 fallback，會嘗試把舊的 fallback 判斷升級為 Ollama 判斷。</p>
+    {% endif %}
+    <p><a href="{% url 'app_risk_alert:home' %}?ai=0">切換成只用關鍵字 fallback</a></p>
+  {% else %}
+    <p>目前只使用關鍵字 fallback，不會呼叫 Ollama。這適合 Ollama 未啟動或想快速檢查頁面時使用。</p>
+    <p>
+      <a href="{% url 'app_risk_alert:home' %}?ai=1">啟用 Ollama 二次判斷</a>
+      ｜
+      <a href="{% url 'app_risk_alert:home' %}?ai=1&limit=5">只先補 5 篇</a>
+      ｜
+      <a href="{% url 'app_risk_alert:home' %}?ai=1&limit=10">只先補 10 篇</a>
+    </p>
+  {% endif %}
+  <div class="footer-note">
+    <p>背景狀態：{{ job_state.message }}</p>
+    {% if job_state.started_at %}<p>開始時間：{{ job_state.started_at }}</p>{% endif %}
+    {% if job_state.finished_at %}<p>完成時間：{{ job_state.finished_at }}</p>{% endif %}
+  </div>
+  <p>
+    <a href="{% url 'app_risk_alert:home' %}?ai={% if use_ai %}1{% else %}0{% endif %}{% if max_new %}&limit={{ max_new }}{% endif %}&save=1">儲存本次整體風險分析快照</a>
+    ｜
+    <a href="{% url 'app_risk_alert:home' %}?summary_ai=1">只用 Ollama 生成風險摘要</a>
+    ｜
+    <a href="{% url 'app_risk_alert:home' %}?ai=1&retry_fallback=1">重跑 fallback 判斷</a>
+  </p>
+  {% if save_result %}
+    <p class="footer-note">已儲存本次整體風險分析快照。</p>
+  {% endif %}
+  <p class="footer-note">提醒：本機 Ollama 較慢時，完整補完可能需要數分鐘；已判斷過的新聞會寫入資料庫，下次不會重複判斷。重新整理頁面即可查看最新背景狀態。</p>
+</section>
+
+{% if error %}
+<section class="section-card"><p style="color:#b91c1c;">{{ error }}</p></section>
+{% endif %}
+
+<section class="section-card">
+  <h2>三大工具風險卡</h2>
+  <div class="stats-grid">
+    {% for item in results %}
+    <article class="stat-card">
+      <div class="stat-label">{{ item.tool }}</div>
+      <div class="stat-value">{{ item.risk_score }}</div>
+      <p>等級：{{ item.risk_level }}</p>
+      <p>主要風險：{{ item.main_risk_type }}</p>
+      <p>負面新聞：{{ item.negative_count }} 篇</p>
+      <p>疑似候選：{{ item.candidate_count }} 篇</p>
+      <p>風險新聞：{{ item.risk_count }} 篇</p>
+      <p>已快取 Ollama 判斷：{{ item.cached_ollama_count }} 篇</p>
+      <p>已快取 fallback 判斷：{{ item.cached_fallback_count }} 篇</p>
+      <p>風險詞：{{ item.risk_keywords|join:"、"|default:"目前查無資料" }}</p>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="section-card">
+  <h2>風險分數長條圖</h2>
+  <div class="chart-wrap"><canvas id="riskScoreChart"></canvas></div>
+</section>
+
+<section class="section-card">
+  <h2>風險類別分布</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>風險類別</th><th>命中次數</th></tr></thead>
+      <tbody>
+        {% for row in risk_type_rows %}
+        <tr><td>{{ row.type }}</td><td>{{ row.count }}</td></tr>
+        {% empty %}
+        <tr><td colspan="2">目前查無資料</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section-card">
+  <h2>代表風險新聞列表</h2>
+  {% for item in results %}
+    <h3>{{ item.tool }}</h3>
+    <div class="table-wrap" style="margin-bottom:18px;">
+      <table>
+        <thead><tr><th>日期</th><th>標題</th><th>風險類別</th><th>命中風險詞</th><th>判斷來源</th><th>判斷理由</th><th>摘要</th><th>連結</th></tr></thead>
+        <tbody>
+          {% for news in item.risk_articles %}
+          <tr>
+            <td>{{ news.date|date:"Y-m-d" }}</td>
+            <td>{{ news.title }}</td>
+            <td>{{ news.risk_type }}</td>
+            <td>{{ news.hit_keywords }}</td>
+            <td>{{ news.judged_by }}</td>
+            <td>{{ news.reason }}</td>
+            <td>{{ news.summary }}...</td>
+            <td><a href="{{ news.link }}" target="_blank">查看原文</a></td>
+          </tr>
+          {% empty %}
+          <tr><td colspan="8">目前查無資料</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% endfor %}
+</section>
+
+<section class="section-card">
+  <h2>{% if use_ai_summary %}Ollama 風險解讀{% else %}快速風險解讀{% endif %}</h2>
+  <div style="white-space:pre-wrap; line-height:1.8;">{{ risk_summary }}</div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+new Chart(document.getElementById('riskScoreChart'), {
+  type: 'bar',
+  data: {
+    labels: {{ chart_labels|safe }},
+    datasets: [{
+      label: '風險分數',
+      data: {{ chart_scores|safe }},
+      backgroundColor: ['#2563eb', '#db2777', '#ea580c']
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: { y: { beginAtZero: true, max: 100 } }
+  }
+});
+</script>
+{% endblock %}

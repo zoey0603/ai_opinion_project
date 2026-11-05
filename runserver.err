@@ -1,0 +1,735 @@
+Watching for file changes with StatReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_hot_event\views.py changed, reloading.
+Watching for file changes with StatReloader
+[22/Jun/2026 00:46:50] "GET /hot-event/ HTTP/1.1" 200 37945
+[22/Jun/2026 00:47:44] "GET /risk-alert/ HTTP/1.1" 200 28111
+[22/Jun/2026 00:47:44] "GET /hot-event/ HTTP/1.1" 200 38199
+[22/Jun/2026 00:47:45,061] - Broken pipe from ('127.0.0.1', 52407)
+[22/Jun/2026 00:47:45,565] - Broken pipe from ('127.0.0.1', 52408)
+[22/Jun/2026 00:48:22] "GET /hot-event/ HTTP/1.1" 200 38199
+[22/Jun/2026 00:50:45] "GET /hot-event/ HTTP/1.1" 200 37945
+[22/Jun/2026 00:50:47] "GET /hot-event/ HTTP/1.1" 200 37945
+[22/Jun/2026 00:50:50] "GET /risk-alert/ HTTP/1.1" 200 28111
+[22/Jun/2026 00:50:53] "GET /hot-event/ HTTP/1.1" 200 37945
+[22/Jun/2026 00:50:56] "GET /risk-alert/ HTTP/1.1" 200 28111
+[22/Jun/2026 00:51:43] "GET /risk-alert/ HTTP/1.1" 200 27856
+[22/Jun/2026 00:54:02] "GET /ai-digest/ HTTP/1.1" 200 9125
+[22/Jun/2026 00:54:31] "GET /ai-digest/ HTTP/1.1" 200 9125
+[22/Jun/2026 01:00:06,115] - Broken pipe from ('127.0.0.1', 60905)
+[22/Jun/2026 01:00:50] "GET /risk-alert/ HTTP/1.1" 200 27856
+[22/Jun/2026 01:00:55] "GET /ai-digest/ HTTP/1.1" 200 9199
+[22/Jun/2026 01:00:57] "GET /ai-report/ HTTP/1.1" 200 8831
+[22/Jun/2026 01:00:59] "GET /recommend/ HTTP/1.1" 200 13116
+[22/Jun/2026 01:01:00] "GET /ai-report/ HTTP/1.1" 200 8831
+[22/Jun/2026 01:01:02] "GET /compare/ HTTP/1.1" 200 10626
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_news_db\utils.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_news_db\utils.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\ai_opinion_project\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_home\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\ai_opinion_project\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_news_db\utils.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\ai_opinion_project\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_trend\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_news_db\utils.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_news_db\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_news_db\utils.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_news_db\utils.py changed, reloading.
+Watching for file changes with StatReloader
+[22/Jun/2026 02:14:09] "GET /trend/ HTTP/1.1" 200 14695
+[22/Jun/2026 02:14:10] "GET /risk-alert/ HTTP/1.1" 200 25063
+[22/Jun/2026 02:14:10,496] - Broken pipe from ('127.0.0.1', 50338)
+[22/Jun/2026 02:14:11,118] - Broken pipe from ('127.0.0.1', 50339)
+[22/Jun/2026 02:15:10] "GET /risk-alert/ HTTP/1.1" 200 25063
+[22/Jun/2026 02:17:12] "GET /ai-digest/ HTTP/1.1" 200 9208
+[22/Jun/2026 02:17:15] "GET /hot-event/ HTTP/1.1" 200 37380
+[22/Jun/2026 02:17:27] "GET /trend/ HTTP/1.1" 200 14695
+[22/Jun/2026 02:17:28] "GET /recommend/ HTTP/1.1" 200 13125
+[22/Jun/2026 02:17:29] "GET /admin/ HTTP/1.1" 200 15940
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_news_db\utils.py changed, reloading.
+Watching for file changes with StatReloader
+Exception in thread django-main-thread:
+Traceback (most recent call last):
+  File "C:\Users\UserName\AppData\Roaming\uv\python\cpython-3.14-windows-x86_64-none\Lib\threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\UserName\AppData\Roaming\uv\python\cpython-3.14-windows-x86_64-none\Lib\threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\.venv\Lib\site-packages\django\utils\autoreload.py", line 64, in wrapper
+    fn(*args, **kwargs)
+    ~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\.venv\Lib\site-packages\django\core\management\commands\runserver.py", line 134, in inner_run
+    self.check(**check_kwargs)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\.venv\Lib\site-packages\django\core\management\base.py", line 496, in check
+    all_issues = checks.run_checks(
+        app_configs=app_configs,
+    ...<2 lines>...
+        databases=databases,
+    )
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\.venv\Lib\site-packages\django\core\checks\registry.py", line 89, in run_checks
+    new_errors = check(app_configs=app_configs, databases=databases)
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\.venv\Lib\site-packages\django\core\checks\urls.py", line 16, in check_url_config
+    return check_resolver(resolver)
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\.venv\Lib\site-packages\django\core\checks\urls.py", line 26, in check_resolver
+    return check_method()
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\.venv\Lib\site-packages\django\urls\resolvers.py", line 531, in check
+    for pattern in self.url_patterns:
+                   ^^^^^^^^^^^^^^^^^
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\.venv\Lib\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\.venv\Lib\site-packages\django\urls\resolvers.py", line 718, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+                       ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\.venv\Lib\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\.venv\Lib\site-packages\django\urls\resolvers.py", line 711, in urlconf_module
+    return import_module(self.urlconf_name)
+  File "C:\Users\UserName\AppData\Roaming\uv\python\cpython-3.14-windows-x86_64-none\Lib\importlib\__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1398, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1371, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1342, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 938, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 759, in exec_module
+  File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\ai_opinion_project\urls.py", line 30, in <module>
+    path('risk-alert/', include('app_risk_alert.urls')),
+                        ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\.venv\Lib\site-packages\django\urls\conf.py", line 39, in include
+    urlconf_module = import_module(urlconf_module)
+  File "C:\Users\UserName\AppData\Roaming\uv\python\cpython-3.14-windows-x86_64-none\Lib\importlib\__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1398, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1371, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1342, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 938, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 759, in exec_module
+  File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_risk_alert\urls.py", line 3, in <module>
+    from . import views
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_risk_alert\views.py", line 7, in <module>
+    from app_news_db.utils import RISK_WORDS_BY_TYPE, call_ollama, fallback_risk_summary, find_risk_hits
+ImportError: cannot import name 'RISK_WORDS_BY_TYPE' from 'app_news_db.utils' (C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_news_db\utils.py)
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_risk_alert\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_risk_alert\views.py changed, reloading.
+Watching for file changes with StatReloader
+[22/Jun/2026 02:23:30] "GET /risk-alert/?ai=0 HTTP/1.1" 200 31355
+[22/Jun/2026 02:23:31,340] - Broken pipe from ('127.0.0.1', 61177)
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_risk_alert\views.py changed, reloading.
+Watching for file changes with StatReloader
+[22/Jun/2026 02:25:59] "GET /risk-alert/?ai=0 HTTP/1.1" 200 31355
+[22/Jun/2026 02:26:00,031] - Broken pipe from ('127.0.0.1', 55623)
+[22/Jun/2026 02:31:04] "GET /admin/ HTTP/1.1" 200 16694
+[22/Jun/2026 02:31:08] "GET / HTTP/1.1" 200 8776
+[22/Jun/2026 02:31:14] "GET / HTTP/1.1" 200 8776
+[22/Jun/2026 02:31:17] "GET /topword/ HTTP/1.1" 200 15523
+[22/Jun/2026 02:31:19] "GET /trend/ HTTP/1.1" 200 14695
+[22/Jun/2026 02:31:25] "GET /compare/ HTTP/1.1" 200 10635
+[22/Jun/2026 02:31:52] "GET /recommend/ HTTP/1.1" 200 13125
+[22/Jun/2026 02:31:55] "GET /ai-digest/ HTTP/1.1" 200 9208
+[22/Jun/2026 02:31:56] "GET /ai-report/ HTTP/1.1" 200 8980
+[22/Jun/2026 02:31:58] "GET /ai-digest/ HTTP/1.1" 200 9208
+[22/Jun/2026 02:32:01] "GET /risk-alert/ HTTP/1.1" 200 31355
+[22/Jun/2026 02:59:58] "GET / HTTP/1.1" 200 8776
+[22/Jun/2026 03:00:09] "GET /topword/ HTTP/1.1" 200 15523
+[22/Jun/2026 03:00:11] "GET /trend/ HTTP/1.1" 200 14695
+[22/Jun/2026 03:00:15] "GET /trend/?date=2026-06-11 HTTP/1.1" 200 24780
+[22/Jun/2026 03:00:19] "GET /compare/ HTTP/1.1" 200 10635
+[22/Jun/2026 03:01:46] "GET / HTTP/1.1" 200 8776
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_topword\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_home\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_risk_alert\views.py changed, reloading.
+Watching for file changes with StatReloader
+[22/Jun/2026 03:06:26] "GET / HTTP/1.1" 200 9298
+[22/Jun/2026 03:06:35] "GET /topword/ HTTP/1.1" 200 15580
+[22/Jun/2026 03:06:38] "GET /compare/ HTTP/1.1" 200 10636
+[22/Jun/2026 03:06:50] "GET /trend/ HTTP/1.1" 200 14695
+[22/Jun/2026 03:06:59] "GET /topword/ HTTP/1.1" 200 15562
+[22/Jun/2026 03:07:01] "GET /compare/ HTTP/1.1" 200 10635
+[22/Jun/2026 03:07:02] "GET /recommend/ HTTP/1.1" 200 13125
+[22/Jun/2026 03:07:04] "GET /recommend/?task=%E5%AF%AB%E5%A0%B1%E5%91%8A HTTP/1.1" 200 24572
+[22/Jun/2026 03:07:06] "GET /compare/ HTTP/1.1" 200 10635
+[22/Jun/2026 03:07:06] "GET / HTTP/1.1" 200 9298
+[22/Jun/2026 03:07:06] "GET /topword/ HTTP/1.1" 200 15562
+[22/Jun/2026 03:07:07,132] - Broken pipe from ('127.0.0.1', 50339)
+[22/Jun/2026 03:07:07,132] - Broken pipe from ('127.0.0.1', 50338)
+[22/Jun/2026 03:07:07,298] - Broken pipe from ('127.0.0.1', 50342)
+[22/Jun/2026 03:07:07] "GET /hot-event/ HTTP/1.1" 200 37614
+[22/Jun/2026 03:07:07] "GET /risk-alert/?ai=0 HTTP/1.1" 200 31474
+[22/Jun/2026 03:07:08,234] - Broken pipe from ('127.0.0.1', 50340)
+[22/Jun/2026 03:07:08,236] - Broken pipe from ('127.0.0.1', 50341)
+[22/Jun/2026 03:07:31] "GET /ai-report/ HTTP/1.1" 200 8980
+[22/Jun/2026 03:07:32] "GET /ai-digest/ HTTP/1.1" 200 9208
+[22/Jun/2026 03:07:34] "GET /risk-alert/ HTTP/1.1" 200 31474
+Internal Server Error: /risk-alert/
+Traceback (most recent call last):
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\.venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\.venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+sqlite3.OperationalError: database is locked
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_risk_alert\views.py", line 212, in home
+    results = [_build_tool_result(tool, use_ai=use_ai, save_result=save_result) for tool in TOOLS]
+               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_risk_alert\views.py", line 147, in _build_tool_result
+    judgement = _get_or_create_judgement(article, tool, type_hits, kw_hits, use_ai=use_ai)
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_risk_alert\views.py", line 113, in _get_or_create_judgement
+    judgement, _ = RiskArticleJudgement.objects.update_or_create(
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        article=article,
+        ^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+        },
+        ^^
+    )
+    ^
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\.venv\Lib\site-packages\django\db\models\query.py", line 1014, in update_or_create
+    obj.save(using=self.db, update_fields=update_fields)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\.venv\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\.venv\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\.venv\Lib\site-packages\django\db\models\base.py", line 1138, in _save_table
+    updated = self._do_update(
+        base_qs, using, pk_val, values, update_fields, forced_update
+    )
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\.venv\Lib\site-packages\django\db\models\base.py", line 1203, in _do_update
+    return filtered._update(values) > 0
+           ~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\.venv\Lib\site-packages\django\db\models\query.py", line 1288, in _update
+    return query.get_compiler(self.db).execute_sql(ROW_COUNT)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\.venv\Lib\site-packages\django\db\models\sql\compiler.py", line 2060, in execute_sql
+    row_count = super().execute_sql(result_type)
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\.venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\.venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\.venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\.venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\.venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\.venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\.venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\.venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: database is locked
+[22/Jun/2026 03:08:56] "GET /risk-alert/?ai=1 HTTP/1.1" 500 191877
+[22/Jun/2026 03:10:36] "GET /hot-event/ HTTP/1.1" 200 37614
+[22/Jun/2026 03:10:48] "GET /risk-alert/ HTTP/1.1" 200 31474
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\ai_opinion_project\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_risk_alert\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_risk_alert\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_risk_alert\views.py changed, reloading.
+Watching for file changes with StatReloader
+[22/Jun/2026 03:14:19] "GET /risk-alert/?ai=0 HTTP/1.1" 200 31474
+[22/Jun/2026 03:14:20,234] - Broken pipe from ('127.0.0.1', 56627)
+[22/Jun/2026 03:15:52] "GET /risk-alert/ HTTP/1.1" 200 31474
+[22/Jun/2026 03:15:57] "GET /admin/ HTTP/1.1" 200 16694
+[22/Jun/2026 03:16:00] "GET /admin/ HTTP/1.1" 200 16694
+[22/Jun/2026 03:16:03] "GET /admin/ HTTP/1.1" 200 16694
+[22/Jun/2026 03:16:04] "GET /admin/ HTTP/1.1" 200 16694
+[22/Jun/2026 03:16:29] "GET / HTTP/1.1" 200 9298
+[22/Jun/2026 03:17:25] "GET /risk-alert/ HTTP/1.1" 200 31474
+[22/Jun/2026 03:17:26] "GET /hot-event/ HTTP/1.1" 200 37614
+[22/Jun/2026 03:17:27] "GET /ai-digest/ HTTP/1.1" 200 9208
+[22/Jun/2026 03:17:28] "GET /ai-report/ HTTP/1.1" 200 8980
+[22/Jun/2026 03:17:28] "GET /ai-digest/ HTTP/1.1" 200 9208
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\ai_opinion_project\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_ai_digest\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_risk_alert\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_risk_alert\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_recommend\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_risk_alert\views.py changed, reloading.
+Watching for file changes with StatReloader
+[22/Jun/2026 03:56:14] "GET /risk-alert/?ai=0 HTTP/1.1" 200 32063
+[22/Jun/2026 03:56:14] "GET /risk-alert/?summary_ai=0 HTTP/1.1" 200 32063
+[22/Jun/2026 03:56:14,883] - Broken pipe from ('127.0.0.1', 51704)
+[22/Jun/2026 03:56:14,883] - Broken pipe from ('127.0.0.1', 51703)
+[22/Jun/2026 03:56:21] "GET /risk-alert/?ai=1&limit=1&timeout=5 HTTP/1.1" 200 32031
+[22/Jun/2026 03:56:21,929] - Broken pipe from ('127.0.0.1', 51702)
+[22/Jun/2026 04:08:01] "GET /risk-alert/?ai=1&limit=1&timeout=5 HTTP/1.1" 200 32031
+[22/Jun/2026 04:08:01,877] - Broken pipe from ('127.0.0.1', 63990)
+[22/Jun/2026 04:08:53] "GET /risk-alert/ HTTP/1.1" 200 32063
+[22/Jun/2026 04:09:27] "GET / HTTP/1.1" 200 9298
+[22/Jun/2026 04:09:49,109] - Broken pipe from ('127.0.0.1', 61454)
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_risk_alert\views.py changed, reloading.
+Watching for file changes with StatReloader
+Exception in thread django-main-thread:
+Traceback (most recent call last):
+  File "C:\Users\UserName\AppData\Roaming\uv\python\cpython-3.14-windows-x86_64-none\Lib\threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\UserName\AppData\Roaming\uv\python\cpython-3.14-windows-x86_64-none\Lib\threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\.venv\Lib\site-packages\django\utils\autoreload.py", line 64, in wrapper
+    fn(*args, **kwargs)
+    ~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\.venv\Lib\site-packages\django\core\management\commands\runserver.py", line 134, in inner_run
+    self.check(**check_kwargs)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\.venv\Lib\site-packages\django\core\management\base.py", line 496, in check
+    all_issues = checks.run_checks(
+        app_configs=app_configs,
+    ...<2 lines>...
+        databases=databases,
+    )
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\.venv\Lib\site-packages\django\core\checks\registry.py", line 89, in run_checks
+    new_errors = check(app_configs=app_configs, databases=databases)
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\.venv\Lib\site-packages\django\core\checks\urls.py", line 16, in check_url_config
+    return check_resolver(resolver)
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\.venv\Lib\site-packages\django\core\checks\urls.py", line 26, in check_resolver
+    return check_method()
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\.venv\Lib\site-packages\django\urls\resolvers.py", line 531, in check
+    for pattern in self.url_patterns:
+                   ^^^^^^^^^^^^^^^^^
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\.venv\Lib\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\.venv\Lib\site-packages\django\urls\resolvers.py", line 718, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+                       ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\.venv\Lib\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\.venv\Lib\site-packages\django\urls\resolvers.py", line 711, in urlconf_module
+    return import_module(self.urlconf_name)
+  File "C:\Users\UserName\AppData\Roaming\uv\python\cpython-3.14-windows-x86_64-none\Lib\importlib\__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1398, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1371, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1342, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 938, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 759, in exec_module
+  File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\ai_opinion_project\urls.py", line 30, in <module>
+    path('risk-alert/', include('app_risk_alert.urls')),
+                        ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\.venv\Lib\site-packages\django\urls\conf.py", line 39, in include
+    urlconf_module = import_module(urlconf_module)
+  File "C:\Users\UserName\AppData\Roaming\uv\python\cpython-3.14-windows-x86_64-none\Lib\importlib\__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1398, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1371, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1342, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 938, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 759, in exec_module
+  File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_risk_alert\urls.py", line 3, in <module>
+    from . import views
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_risk_alert\views.py", line 92, in <module>
+    def _get_or_create_judgement(article, tool, type_hits, kw_hits, use_ai=True, ollama_budget=None, ollama_timeout=DEFAULT_OLLAMA_TIMEOUT):
+                                                                                                                    ^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'DEFAULT_OLLAMA_TIMEOUT' is not defined. Did you mean: 'MAX_OLLAMA_TIMEOUT'?
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_risk_alert\views.py changed, reloading.
+Watching for file changes with StatReloader
+Exception in thread django-main-thread:
+Traceback (most recent call last):
+  File "C:\Users\UserName\AppData\Roaming\uv\python\cpython-3.14-windows-x86_64-none\Lib\threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\UserName\AppData\Roaming\uv\python\cpython-3.14-windows-x86_64-none\Lib\threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\.venv\Lib\site-packages\django\utils\autoreload.py", line 64, in wrapper
+    fn(*args, **kwargs)
+    ~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\.venv\Lib\site-packages\django\core\management\commands\runserver.py", line 134, in inner_run
+    self.check(**check_kwargs)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\.venv\Lib\site-packages\django\core\management\base.py", line 496, in check
+    all_issues = checks.run_checks(
+        app_configs=app_configs,
+    ...<2 lines>...
+        databases=databases,
+    )
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\.venv\Lib\site-packages\django\core\checks\registry.py", line 89, in run_checks
+    new_errors = check(app_configs=app_configs, databases=databases)
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\.venv\Lib\site-packages\django\core\checks\urls.py", line 16, in check_url_config
+    return check_resolver(resolver)
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\.venv\Lib\site-packages\django\core\checks\urls.py", line 26, in check_resolver
+    return check_method()
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\.venv\Lib\site-packages\django\urls\resolvers.py", line 531, in check
+    for pattern in self.url_patterns:
+                   ^^^^^^^^^^^^^^^^^
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\.venv\Lib\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\.venv\Lib\site-packages\django\urls\resolvers.py", line 718, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+                       ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\.venv\Lib\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\.venv\Lib\site-packages\django\urls\resolvers.py", line 711, in urlconf_module
+    return import_module(self.urlconf_name)
+  File "C:\Users\UserName\AppData\Roaming\uv\python\cpython-3.14-windows-x86_64-none\Lib\importlib\__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1398, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1371, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1342, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 938, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 759, in exec_module
+  File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\ai_opinion_project\urls.py", line 30, in <module>
+    path('risk-alert/', include('app_risk_alert.urls')),
+                        ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\.venv\Lib\site-packages\django\urls\conf.py", line 39, in include
+    urlconf_module = import_module(urlconf_module)
+  File "C:\Users\UserName\AppData\Roaming\uv\python\cpython-3.14-windows-x86_64-none\Lib\importlib\__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1398, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1371, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1342, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 938, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 759, in exec_module
+  File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_risk_alert\urls.py", line 3, in <module>
+    from . import views
+  File "C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_risk_alert\views.py", line 191, in <module>
+    def _build_tool_result(tool, use_ai=True, save_result=False, ollama_budget=None, ollama_timeout=DEFAULT_OLLAMA_TIMEOUT):
+                                                                                                    ^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'DEFAULT_OLLAMA_TIMEOUT' is not defined. Did you mean: 'MAX_OLLAMA_TIMEOUT'?
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_risk_alert\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_risk_alert\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_risk_alert\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_risk_alert\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_risk_alert\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_risk_alert\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_risk_alert\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_risk_alert\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_home\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_risk_alert\views.py changed, reloading.
+Watching for file changes with StatReloader
+[23/Jun/2026 00:12:45] "GET /risk-alert/?ai=1 HTTP/1.1" 200 32784
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_hot_event\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_home\views.py changed, reloading.
+Watching for file changes with StatReloader
+[23/Jun/2026 00:15:04] "GET / HTTP/1.1" 200 9333
+[23/Jun/2026 00:15:04] "GET /trend/ HTTP/1.1" 200 14718
+[23/Jun/2026 00:15:04] "GET /topword/ HTTP/1.1" 200 15562
+[23/Jun/2026 00:15:04] "GET /compare/ HTTP/1.1" 200 10637
+[23/Jun/2026 00:15:05] "GET /recommend/ HTTP/1.1" 200 13125
+[23/Jun/2026 00:15:05] "GET /ai-report/ HTTP/1.1" 200 8980
+[23/Jun/2026 00:15:05] "GET /ai-digest/ HTTP/1.1" 200 9208
+[23/Jun/2026 00:15:05] "GET /risk-alert/ HTTP/1.1" 200 32676
+[23/Jun/2026 00:15:05] "GET /hot-event/ HTTP/1.1" 200 39758
+[23/Jun/2026 00:15:05] "GET /admin/ HTTP/1.1" 302 0
+[23/Jun/2026 00:15:06] "GET /admin/login/?next=/admin/ HTTP/1.1" 200 3538
+[23/Jun/2026 00:15:06,256] - Broken pipe from ('127.0.0.1', 65019)
+[23/Jun/2026 00:15:38] "GET /ai-digest/ HTTP/1.1" 200 9208
+[23/Jun/2026 00:16:07] "POST /ai-digest/ HTTP/1.1" 200 9334
+[23/Jun/2026 00:16:14] "GET /trend/ HTTP/1.1" 200 14718
+[23/Jun/2026 00:16:29] "GET /ai-digest/ HTTP/1.1" 200 9208
+[23/Jun/2026 00:19:50] "GET /ai-digest/ HTTP/1.1" 200 9208
+[23/Jun/2026 00:19:53] "GET /ai-digest/history/ HTTP/1.1" 200 18064
+[23/Jun/2026 00:20:05] "GET /ai-digest/ HTTP/1.1" 200 9208
+[23/Jun/2026 00:21:32,104] - Broken pipe from ('127.0.0.1', 64996)
+[23/Jun/2026 00:22:10] "GET /ai-digest/ HTTP/1.1" 200 9285
+[23/Jun/2026 00:22:16] "GET /ai-digest/history/ HTTP/1.1" 200 22647
+[23/Jun/2026 00:22:40] "GET /ai-digest/ HTTP/1.1" 200 9285
+[23/Jun/2026 00:22:43] "GET /hot-event/ HTTP/1.1" 200 39758
+[23/Jun/2026 00:25:35] "GET /hot-event/?ai=1 HTTP/1.1" 200 42613
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_hot_event\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_hot_event\views.py changed, reloading.
+Watching for file changes with StatReloader
+[23/Jun/2026 00:29:14] "GET /hot-event/ HTTP/1.1" 200 40504
+[23/Jun/2026 00:29:15,149] - Broken pipe from ('127.0.0.1', 62822)
+[23/Jun/2026 00:30:22] "GET /hot-event/ HTTP/1.1" 200 40504
+[23/Jun/2026 00:33:18] "GET /hot-event/ HTTP/1.1" 200 42735
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_hot_event\views.py changed, reloading.
+Watching for file changes with StatReloader
+[23/Jun/2026 00:38:03] "GET /hot-event/?ai_job=1 HTTP/1.1" 200 47544
+[23/Jun/2026 00:38:03] "GET /hot-event/ HTTP/1.1" 200 47408
+[23/Jun/2026 00:38:03,539] - Broken pipe from ('127.0.0.1', 61500)
+[23/Jun/2026 00:38:03,628] - Broken pipe from ('127.0.0.1', 61502)
+[23/Jun/2026 00:38:23] "GET /hot-event/ HTTP/1.1" 200 47408
+[23/Jun/2026 00:38:28,363] - Broken pipe from ('127.0.0.1', 61514)
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_hot_event\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_hot_event\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_hot_event\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_hot_event\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_hot_event\views.py changed, reloading.
+Watching for file changes with StatReloader
+[23/Jun/2026 10:19:39] "GET /hot-event/ HTTP/1.1" 200 120598
+[23/Jun/2026 10:20:26] "GET /hot-event/?ai_job=1 HTTP/1.1" 200 272914
+[23/Jun/2026 10:20:26] "GET /hot-event/ HTTP/1.1" 200 272778
+[23/Jun/2026 10:20:27,565] - Broken pipe from ('127.0.0.1', 53583)
+[23/Jun/2026 10:20:27,632] - Broken pipe from ('127.0.0.1', 53584)
+[23/Jun/2026 10:21:12] "GET /hot-event/ HTTP/1.1" 200 272778
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_hot_event\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_hot_event\views.py changed, reloading.
+Watching for file changes with StatReloader
+[23/Jun/2026 10:27:11] "GET /hot-event/?question=hot_keywords_week HTTP/1.1" 200 285678
+[23/Jun/2026 10:27:11] "GET /hot-event/ HTTP/1.1" 200 285233
+[23/Jun/2026 10:27:11,560] - Broken pipe from ('127.0.0.1', 53308)
+[23/Jun/2026 10:27:11,658] - Broken pipe from ('127.0.0.1', 53309)
+[23/Jun/2026 10:31:36] "GET /hot-event/ HTTP/1.1" 200 285233
+[23/Jun/2026 10:32:04] "GET /hot-event/?question=most_negative_tool HTTP/1.1" 200 281056
+[23/Jun/2026 10:33:43] "GET /hot-event/?question=most_negative_tool&rag_ai=1 HTTP/1.1" 200 282066
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_hot_event\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_hot_event\admin.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_hot_event\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_hot_event\views.py changed, reloading.
+Watching for file changes with StatReloader
+[23/Jun/2026 10:39:11] "GET /hot-event/?q=%E6%9C%80%E8%BF%91%E4%B8%80%E6%98%9F%E6%9C%9F%E6%9C%80%E5%A4%9A%E8%A8%8E%E8%AB%96%E5%BA%A6%E7%9A%84AI%E5%B7%A5%E5%85%B7%E6%98%AF%E5%93%AA%E4%B8%80%E5%80%8B%EF%BC%9F&tool=ALL HTTP/1.1" 200 280168
+[23/Jun/2026 10:39:11] "GET /hot-event/ HTTP/1.1" 200 279917
+[23/Jun/2026 10:39:12,994] - Broken pipe from ('127.0.0.1', 59541)
+[23/Jun/2026 10:39:13,036] - Broken pipe from ('127.0.0.1', 59542)
+[23/Jun/2026 10:39:49] "GET /hot-event/ HTTP/1.1" 200 279917
+[23/Jun/2026 10:39:53,650] - Broken pipe from ('127.0.0.1', 54579)
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_hot_event\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\ai_opinion_project\urls.py changed, reloading.
+Watching for file changes with StatReloader
+tReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_risk_alert\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_risk_alert\views.py changed, reloading.
+Watching for file changes with StatReloader
+[22/Jun/2026 04:30:12] "GET /risk-alert/ HTTP/1.1" 200 32404
+[22/Jun/2026 04:30:12] "GET /risk-alert/?ai=1 HTTP/1.1" 200 32436
+[22/Jun/2026 04:30:12,713] - Broken pipe from ('127.0.0.1', 52160)
+[22/Jun/2026 04:30:12,963] - Broken pipe from ('127.0.0.1', 52161)
+[22/Jun/2026 04:32:28] "GET /risk-alert/?ai=1&limit=3&timeout=45&save=1 HTTP/1.1" 200 32448
+[23/Jun/2026 00:02:38] "GET /hot-event/ HTTP/1.1" 200 37614
+[23/Jun/2026 00:02:39] "GET /hot-event/ HTTP/1.1" 200 37614
+[23/Jun/2026 00:06:37] "GET /hot-event/ HTTP/1.1" 200 39630
+[23/Jun/2026 00:06:57] "GET /trend/ HTTP/1.1" 200 14718
+[23/Jun/2026 00:07:08] "GET /trend/?date=2026-06-22 HTTP/1.1" 200 17203
+[23/Jun/2026 00:07:45] "GET /trend/?date=2026-06-15 HTTP/1.1" 200 21525
+[23/Jun/2026 00:08:54] "GET /risk-alert/ HTTP/1.1" 200 32287
+[23/Jun/2026 00:09:07] "GET /risk-alert/?ai=1 HTTP/1.1" 200 32293
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_home\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_risk_alert\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_hot_event\views.py changed, reloading.
+Watching for file changes with StatReloader
+[23/Jun/2026 00:13:19] "GET / HTTP/1.1" 200 9474
+[23/Jun/2026 00:13:19,781] - Broken pipe from ('127.0.0.1', 56238)
+[23/Jun/2026 00:13:20] "GET /risk-alert/ HTTP/1.1" 200 32676
+[23/Jun/2026 00:13:20] "GET /hot-event/ HTTP/1.1" 200 39758
+[23/Jun/2026 00:13:20,444] - Broken pipe from ('127.0.0.1', 56236)
+[23/Jun/2026 00:13:20,626] - Broken pipe from ('127.0.0.1', 56237)
+[23/Jun/2026 00:13:54] "GET /risk-alert/?ai=1 HTTP/1.1" 200 32819
+[23/Jun/2026 00:14:08] "GET / HTTP/1.1" 200 9478
+[23/Jun/2026 00:14:08,638] - Broken pipe from ('127.0.0.1', 64996)
+[23/Jun/2026 00:14:10] "GET /hot-event/ HTTP/1.1" 200 39758
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_home\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_hot_event\views.py changed, reloading.
+Watching for file changes with StatReloader
+[23/Jun/2026 00:27:11] "GET /hot-event/ HTTP/1.1" 200 40504
+[23/Jun/2026 00:27:11,697] - Broken pipe from ('127.0.0.1', 62983)
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_hot_event\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_hot_event\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_hot_event\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_hot_event\views.py changed, reloading.
+Watching for file changes with StatReloader
+[23/Jun/2026 00:40:05] "GET /hot-event/ HTTP/1.1" 200 47402
+[23/Jun/2026 00:40:06] "GET /hot-event/?ai_job=1 HTTP/1.1" 200 47538
+[23/Jun/2026 00:40:06,461] - Broken pipe from ('127.0.0.1', 61546)
+[23/Jun/2026 00:40:06,581] - Broken pipe from ('127.0.0.1', 61547)
+[23/Jun/2026 00:40:37] "GET /hot-event/ HTTP/1.1" 200 47402
+[23/Jun/2026 00:40:48] "GET /hot-event/ HTTP/1.1" 200 47402
+[23/Jun/2026 00:40:52] "GET /hot-event/ HTTP/1.1" 200 47402
+[23/Jun/2026 00:44:39] "GET /hot-event/ HTTP/1.1" 200 47854
+[23/Jun/2026 00:48:14] "GET /hot-event/ HTTP/1.1" 200 50071
+[23/Jun/2026 00:48:25] "GET /hot-event/ HTTP/1.1" 200 50071
+[23/Jun/2026 00:48:29] "GET /hot-event/?ai_job=1 HTTP/1.1" 200 50207
+[23/Jun/2026 00:48:39] "GET /hot-event/?ai_job=1 HTTP/1.1" 200 50207
+[23/Jun/2026 00:52:21] "GET /hot-event/?ai_job=1 HTTP/1.1" 200 54667
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_hot_event\views.py changed, reloading.
+Watching for file changes with StatReloader
+[23/Jun/2026 00:56:39] "GET /hot-event/ HTTP/1.1" 200 85304
+[23/Jun/2026 00:56:39] "GET /hot-event/?ai_job=1 HTTP/1.1" 200 85440
+[23/Jun/2026 00:56:40,212] - Broken pipe from ('127.0.0.1', 56263)
+[23/Jun/2026 00:56:40,230] - Broken pipe from ('127.0.0.1', 56262)
+[23/Jun/2026 00:57:14] "GET /hot-event/?ai_job=1 HTTP/1.1" 200 85440
+[23/Jun/2026 01:00:57] "GET /hot-event/?ai_job=1 HTTP/1.1" 200 84731
+[23/Jun/2026 09:01:45] "GET /hot-event/?ai_job=1 HTTP/1.1" 200 91568
+[23/Jun/2026 09:05:53] "GET / HTTP/1.1" 200 9474
+[23/Jun/2026 09:06:09] "GET / HTTP/1.1" 200 9333
+[23/Jun/2026 09:06:41] "GET /compare/ HTTP/1.1" 200 10639
+[23/Jun/2026 09:19:15] "GET / HTTP/1.1" 200 9319
+[23/Jun/2026 09:21:05] "GET /admin/ HTTP/1.1" 200 13846
+[23/Jun/2026 09:21:05] "GET /static/admin/css/custom_admin.css HTTP/1.1" 304 0
+[23/Jun/2026 09:21:20] "GET /admin/app_risk_alert/riskanalysisresult/add/ HTTP/1.1" 200 19490
+[23/Jun/2026 09:21:20] "GET /admin/jsi18n/ HTTP/1.1" 200 8822
+[23/Jun/2026 09:21:27] "GET /admin/ HTTP/1.1" 200 13846
+[23/Jun/2026 09:21:34] "GET /admin/app_news_db/dataupdatelog/ HTTP/1.1" 200 31109
+[23/Jun/2026 09:21:34] "GET /static/admin/css/changelists.css HTTP/1.1" 304 0
+[23/Jun/2026 09:21:34] "GET /static/admin/img/search.svg HTTP/1.1" 304 0
+[23/Jun/2026 09:21:34] "GET /static/admin/js/filters.js HTTP/1.1" 304 0
+[23/Jun/2026 09:21:34] "GET /admin/jsi18n/ HTTP/1.1" 200 8822
+[23/Jun/2026 09:21:34] "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 304 0
+[23/Jun/2026 09:21:34] "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 304 0
+[23/Jun/2026 09:21:55] "GET /admin/app_news_db/newsarticle/ HTTP/1.1" 200 85145
+[23/Jun/2026 09:21:55] "GET /admin/jsi18n/ HTTP/1.1" 200 8822
+[23/Jun/2026 09:22:25] "GET /admin/app_ai_digest/ HTTP/1.1" 200 5642
+[23/Jun/2026 09:22:29] "GET /admin/app_ai_digest/digestreport/ HTTP/1.1" 200 19484
+[23/Jun/2026 09:22:29] "GET /admin/jsi18n/ HTTP/1.1" 200 8822
+[23/Jun/2026 09:22:35] "GET / HTTP/1.1" 200 9319
+[23/Jun/2026 09:33:10] "GET / HTTP/1.1" 200 9319
+[23/Jun/2026 09:33:21] "GET / HTTP/1.1" 200 9319
+[23/Jun/2026 09:33:23] "GET /trend/ HTTP/1.1" 200 15109
+[23/Jun/2026 09:44:28] "GET /trend/?date=2026-05-29 HTTP/1.1" 200 20693
+[23/Jun/2026 09:44:37] "GET / HTTP/1.1" 200 9319
+[23/Jun/2026 10:16:15] "GET /hot-event/ HTTP/1.1" 200 119728
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_hot_event\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_hot_event\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_hot_event\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_hot_event\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_hot_event\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_hot_event\admin.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_hot_event\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_hot_event\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\app_hot_event\views.py changed, reloading.
+Watching for file changes with StatReloader
+[23/Jun/2026 10:41:33] "GET /hot-event/ HTTP/1.1" 200 283409
+[23/Jun/2026 10:41:33] "GET /hot-event/?q=%E6%9C%80%E8%BF%91%E4%B8%80%E6%98%9F%E6%9C%9FChatGPT%E7%9A%84%E8%A8%8E%E8%AB%96%E9%87%8D%E9%BB%9E%E6%98%AF%E4%BB%80%E9%BA%BC%EF%BC%9F&tool=ChatGPT HTTP/1.1" 200 283646
+[23/Jun/2026 10:41:34,139] - Broken pipe from ('127.0.0.1', 57075)
+[23/Jun/2026 10:41:34,157] - Broken pipe from ('127.0.0.1', 57074)
+[23/Jun/2026 10:42:08] "GET /hot-event/ HTTP/1.1" 200 283409
+[23/Jun/2026 10:42:12,085] - Broken pipe from ('127.0.0.1', 49778)
+[23/Jun/2026 10:42:33] "GET /hot-event/?question=most_negative_tool&rag_ai=1 HTTP/1.1" 200 283409
+[23/Jun/2026 10:43:27] "GET /hot-event/?ai_job=1 HTTP/1.1" 200 283642
+[23/Jun/2026 10:46:54] "GET /hot-event/ HTTP/1.1" 200 286704
+[23/Jun/2026 10:47:00,700] - Broken pipe from ('127.0.0.1', 54715)
+[23/Jun/2026 10:48:23] "GET /hot-event/ HTTP/1.1" 200 289449
+[23/Jun/2026 10:48:26,897] - Broken pipe from ('127.0.0.1', 57698)
+[23/Jun/2026 10:48:30] "GET /hot-event/?ai_job=1 HTTP/1.1" 200 289585
+[23/Jun/2026 10:48:52] "GET /hot-event/?ai_job=1 HTTP/1.1" 200 289585
+[23/Jun/2026 10:49:41] "GET /ai-report/ HTTP/1.1" 200 8980
+[23/Jun/2026 10:49:46] "GET /ai-report/history/ HTTP/1.1" 200 12129
+[23/Jun/2026 10:49:53] "GET /ai-digest/ HTTP/1.1" 200 9285
+[23/Jun/2026 10:49:56] "GET / HTTP/1.1" 200 9319
+[23/Jun/2026 10:57:42] "GET / HTTP/1.1" 200 9319
+[23/Jun/2026 10:59:11] "GET /topword/ HTTP/1.1" 200 15562
+[23/Jun/2026 10:59:15] "GET /trend/ HTTP/1.1" 200 15109
+[23/Jun/2026 10:59:19] "GET /trend/?date=2026-06-03 HTTP/1.1" 200 23051
+[23/Jun/2026 10:59:22] "GET /compare/ HTTP/1.1" 200 10644
+[23/Jun/2026 10:59:37] "GET /recommend/ HTTP/1.1" 200 13125
+[23/Jun/2026 10:59:40] "GET /recommend/?task=%E8%8B%B1%E6%96%87%E7%BF%BB%E8%AD%AF HTTP/1.1" 200 23571
+[23/Jun/2026 10:59:42] "GET /admin/ HTTP/1.1" 200 14563
+[23/Jun/2026 10:59:44] "GET / HTTP/1.1" 200 9319
+[23/Jun/2026 10:59:46] "GET /ai-report/ HTTP/1.1" 200 8980
+[23/Jun/2026 10:59:55] "GET /ai-report/history/ HTTP/1.1" 200 12129
+[23/Jun/2026 11:00:01] "GET /ai-digest/ HTTP/1.1" 200 9285
+[23/Jun/2026 11:00:13] "GET /ai-digest/history/ HTTP/1.1" 200 22647
+[23/Jun/2026 11:00:30] "GET /risk-alert/ HTTP/1.1" 200 36360
+[23/Jun/2026 11:01:04] "GET /hot-event/ HTTP/1.1" 200 292080
+[23/Jun/2026 11:04:16] "GET / HTTP/1.1" 200 9319
+[23/Jun/2026 11:15:21] "GET /risk-alert/ HTTP/1.1" 200 36360
+[23/Jun/2026 22:48:02] "GET / HTTP/1.1" 200 9319
+C:\Users\UserName\OneDrive\桌面\ai_opinion_project\ai_opinion_project\settings.py changed, reloading.
+Watching for file changes with StatReloader
+[23/Jun/2026 23:00:22] "GET /classification/ HTTP/1.1" 200 10862
+[23/Jun/2026 23:00:22,824] - Broken pipe from ('127.0.0.1', 51831)
+[23/Jun/2026 23:03:17] "GET / HTTP/1.1" 200 9371
+[23/Jun/2026 23:03:19] "GET /classification/ HTTP/1.1" 200 11042
+[23/Jun/2026 23:04:38] "POST /classification/ HTTP/1.1" 200 13908
+[23/Jun/2026 23:08:52] "POST /classification/ HTTP/1.1" 200 14260

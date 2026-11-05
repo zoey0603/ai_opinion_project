@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+  <h1>AI 自動生成分析報告</h1>
+  <p class="lead">根據資料庫中的新聞資料，自動產生 ChatGPT / Gemini / Claude 的輿情分析報告。</p>
+</section>
+
+<section class="section-card">
+  <form method="post" action="{% url 'app_ai_report:generate_report' %}" class="toolbar">
+    {% csrf_token %}
+
+    <div class="field">
+      <label for="tool">選擇工具</label>
+      <select name="tool" id="tool">
+        {% for t in tools %}
+          <option value="{{ t }}">{{ t }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="start_date">起始日期</label>
+      <input type="date" name="start_date" id="start_date">
+    </div>
+
+    <div class="field">
+      <label for="end_date">結束日期</label>
+      <input type="date" name="end_date" id="end_date">
+    </div>
+
+    <div class="field" style="align-self:end;">
+      <button class="btn" type="submit">生成報告</button>
+    </div>
+  </form>
+</section>
+
+{% if error %}
+<section class="section-card">
+  <p style="color:red;">{{ error }}</p>
+</section>
+{% endif %}
+
+{% if generated %}
+<section class="section-card">
+  <h2>分析條件</h2>
+  <ul>
+    <li>工具：{{ selected_tool }}</li>
+    <li>起始日期：{{ start_date|default:"未限制" }}</li>
+    <li>結束日期：{{ end_date|default:"未限制" }}</li>
+    <li>總新聞篇數：{{ total_count }}</li>
+  </ul>
+</section>
+
+<section class="section-card">
+  <h2>分析報告</h2>
+  <div style="white-space: pre-wrap; line-height: 1.8;">{{ report_text }}</div>
+</section>
+{% endif %}
+
+<section class="section-card">
+  <h2>最近生成的報告</h2>
+  <ul>
+    {% for r in reports %}
+      <li>
+        {{ r.created_at|date:"Y-m-d H:i" }}｜
+        {{ r.tool }}｜
+        {{ r.start_date|default:"不限" }} ~ {{ r.end_date|default:"不限" }}｜
+        共 {{ r.total_count }} 篇
+      </li>
+    {% empty %}
+      <li>目前尚無報告紀錄。</li>
+    {% endfor %}
+  </ul>
+  <p><a href="{% url 'app_ai_report:history' %}">查看完整報告歷史</a></p>
+</section>
+{% endblock %}

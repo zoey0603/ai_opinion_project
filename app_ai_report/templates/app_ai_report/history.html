@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+  <h1>報告歷史</h1>
+  <p class="lead">查看之前由 AI 自動生成並儲存到資料庫的分析報告。</p>
+</section>
+
+<section class="section-card">
+  {% for r in reports %}
+    <div style="border:1px solid #ddd; border-radius:12px; padding:16px; margin-bottom:20px; background:#fff;">
+      <h3 style="margin-top:0;">{{ r.tool }} 分析報告</h3>
+      <p>
+        <strong>生成時間：</strong>{{ r.created_at|date:"Y-m-d H:i" }}<br>
+        <strong>日期範圍：</strong>{{ r.start_date|default:"不限" }} ~ {{ r.end_date|default:"不限" }}<br>
+        <strong>總新聞篇數：</strong>{{ r.total_count }}
+      </p>
+      <div style="white-space: pre-wrap; line-height: 1.8;">{{ r.report|truncatechars:800 }}</div>
+    </div>
+  {% empty %}
+    <p>目前沒有報告資料。</p>
+  {% endfor %}
+</section>
+{% endblock %}

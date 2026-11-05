@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+  <h1>AI 新聞懶人包生成器</h1>
+  <p class="lead">從資料庫新聞統計 ChatGPT、Gemini、Claude 的聲量、情緒、關鍵字與代表新聞，再用 Ollama 生成不同格式的輿情懶人包。</p>
+</section>
+
+<section class="section-card">
+  <form method="post" class="toolbar">
+    {% csrf_token %}
+    <div class="field">
+      <label for="tool">工具</label>
+      <select id="tool" name="tool">
+        {% for tool in tools %}<option value="{{ tool }}">{{ tool }}</option>{% endfor %}
+      </select>
+    </div>
+    <div class="field">
+      <label for="start_date">起始日期</label>
+      <input type="date" id="start_date" name="start_date">
+    </div>
+    <div class="field">
+      <label for="end_date">結束日期</label>
+      <input type="date" id="end_date" name="end_date">
+    </div>
+    <div class="field">
+      <label for="report_type">輸出格式</label>
+      <select id="report_type" name="report_type">
+        {% for value, label in report_types %}<option value="{{ value }}">{{ label }}</option>{% endfor %}
+      </select>
+    </div>
+    <div class="field" style="align-self:end;">
+      <button class="btn" type="submit">生成懶人包</button>
+    </div>
+  </form>
+</section>
+
+{% if error %}
+<section class="section-card"><p style="color:#b91c1c;">{{ error }}</p></section>
+{% endif %}
+
+{% if result %}
+<section class="section-card">
+  <h2>分析條件</h2>
+  <div class="stats-grid">
+    <article class="stat-card"><div class="stat-label">工具</div><div class="stat-value">{{ result.tool }}</div></article>
+    <article class="stat-card"><div class="stat-label">輸出格式</div><div class="stat-value">{{ result.report_type }}</div></article>
+    <article class="stat-card"><div class="stat-label">新聞篇數</div><div class="stat-value">{{ result.total_count }}</div></article>
+  </div>
+</section>
+
+<section class="section-card">
+  <h2>統計摘要</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>項目</th><th>內容</th></tr></thead>
+      <tbody>
+        <tr><td>日期範圍</td><td>{{ result.start_date|default:"不限" }} ~ {{ result.end_date|default:"不限" }}</td></tr>
+        <tr><td>情緒分布</td><td>{{ result.sentiment_counts }}</td></tr>
+        <tr><td>熱門關鍵字 Top 10</td><td>{% for kw, count in result.top_keywords %}{{ kw }}({{ count }}){% if not forloop.last %}、{% endif %}{% empty %}目前查無資料{% endfor %}</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section-card">
+  <h2>懶人包內容</h2>
+  <div style="white-space:pre-wrap; line-height:1.8;">{{ result.digest_text }}</div>
+</section>
+
+<section class="section-card">
+  <h2>代表新聞 Top 5</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>日期</th><th>工具</th><th>標題</th><th>連結</th></tr></thead>
+      <tbody>
+        {% for news in representative_news %}
+        <tr>
+          <td>{{ news.date|date:"Y-m-d" }}</td>
+          <td>{{ news.tool }}</td>
+          <td>{{ news.title }}</td>
+          <td><a href="{{ news.link }}" target="_blank">查看原文</a></td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="4">目前查無資料</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+{% endif %}
+
+<section class="section-card">
+  <h2>最近 5 筆懶人包紀錄</h2>
+  <ul>
+    {% for report in latest_reports %}
+      <li>{{ report.created_at|date:"Y-m-d H:i" }}｜{{ report.tool }}｜{{ report.get_report_type_display }}｜共 {{ report.total_count }} 篇</li>
+    {% empty %}
+      <li>目前尚無懶人包紀錄。</li>
+    {% endfor %}
+  </ul>
+  <p><a href="{% url 'app_ai_digest:history' %}">查看完整歷史</a></p>
+</section>
+{% endblock %}

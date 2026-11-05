@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+  <h1>懶人包歷史紀錄</h1>
+  <p class="lead">保存每次產生的 AI 新聞懶人包，方便期末報告回溯分析條件與輸出內容。</p>
+</section>
+
+<section class="section-card">
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>時間</th><th>工具</th><th>日期範圍</th><th>格式</th><th>篇數</th><th>內容</th></tr>
+      </thead>
+      <tbody>
+        {% for report in reports %}
+        <tr>
+          <td>{{ report.created_at|date:"Y-m-d H:i" }}</td>
+          <td>{{ report.tool }}</td>
+          <td>{{ report.start_date|default:"不限" }} ~ {{ report.end_date|default:"不限" }}</td>
+          <td>{{ report.get_report_type_display }}</td>
+          <td>{{ report.total_count }}</td>
+          <td style="white-space:pre-wrap;">{{ report.digest_text }}</td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="6">目前查無資料</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+{% endblock %}

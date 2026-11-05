@@ -1,0 +1,270 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+  .news-db-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 18px;
+  }
+
+  .btn-secondary {
+    background: #f8fafc;
+    color: #1e3a8a;
+    border: 1px solid #bfdbfe;
+    box-shadow: none;
+  }
+
+  .btn-secondary:hover {
+    background: #eff6ff;
+    color: #1d4ed8;
+  }
+
+  .news-toolbar-note {
+    color: var(--muted);
+    margin: 8px 0 0;
+    font-size: 0.92rem;
+  }
+
+  .news-list {
+    display: grid;
+    gap: 16px;
+    margin-top: 16px;
+  }
+
+  .news-card {
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    padding: 18px;
+    transition: 0.18s ease;
+  }
+
+  .news-card:hover {
+    background: #ffffff;
+    border-color: #bfdbfe;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+    transform: translateY(-1px);
+  }
+
+  .news-card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    padding: 5px 10px;
+    font-size: 0.84rem;
+    font-weight: 800;
+    background: #eff6ff;
+    color: #1e3a8a;
+  }
+
+  .badge-tool { background: #dbeafe; color: #1d4ed8; }
+  .badge-positive { background: #ecfdf5; color: #047857; }
+  .badge-neutral { background: #f1f5f9; color: #475569; }
+  .badge-negative { background: #fef2f2; color: #b91c1c; }
+
+  .news-title {
+    margin: 0 0 8px;
+    font-size: 1.08rem;
+    line-height: 1.5;
+  }
+
+  .news-title a {
+    color: var(--text);
+  }
+
+  .news-title a:hover {
+    color: var(--primary-dark);
+  }
+
+  .news-summary {
+    color: #475569;
+    margin-bottom: 12px;
+  }
+
+  .keyword-box {
+    background: #ffffff;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 10px 12px;
+    color: #475569;
+    font-size: 0.92rem;
+    word-break: break-word;
+    margin-bottom: 12px;
+  }
+
+  .news-card-footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: center;
+    border-top: 1px solid var(--line);
+    padding-top: 12px;
+  }
+
+  .pagination-bar {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 42px 18px;
+    background: var(--surface-2);
+    border: 1px dashed #cbd5e1;
+    border-radius: var(--radius-sm);
+    color: var(--muted);
+  }
+
+  @media (max-width: 640px) {
+    .news-card-footer { align-items: stretch; }
+    .news-card-footer .btn { width: 100%; text-align: center; }
+  }
+</style>
+
+<section class="hero">
+  <h1>DB 新聞查詢</h1>
+  <p class="lead">直接查看資料庫中的 ChatGPT、Gemini、Claude 科技新聞，可依工具、情緒、日期與關鍵字篩選。</p>
+  <div class="news-db-actions">
+    <a class="btn btn-secondary" href="{% url 'app_news_db:news_db' %}">查看全部</a>
+    <a class="btn btn-secondary" href="?tool=ChatGPT&sentiment=ALL">ChatGPT</a>
+    <a class="btn btn-secondary" href="?tool=Gemini&sentiment=ALL">Gemini</a>
+    <a class="btn btn-secondary" href="?tool=Claude&sentiment=ALL">Claude</a>
+  </div>
+</section>
+
+<section class="section-card">
+  <h2>資料庫狀態</h2>
+  <div class="stats-grid">
+    <article class="stat-card">
+      <div class="stat-label">資料庫總筆數</div>
+      <div class="stat-value">{{ all_count }}</div>
+    </article>
+    <article class="stat-card">
+      <div class="stat-label">目前篩選筆數</div>
+      <div class="stat-value">{{ total_count }}</div>
+    </article>
+    <article class="stat-card">
+      <div class="stat-label">最後更新</div>
+      <div class="stat-value">{% if latest_log %}{{ latest_log.last_updated|date:"Y-m-d H:i" }}{% else %}尚無紀錄{% endif %}</div>
+      <p class="footer-note">{% if latest_log %}{{ latest_log.status }}｜{{ latest_log.message }}{% else %}尚無更新紀錄{% endif %}</p>
+    </article>
+  </div>
+</section>
+
+<section class="section-card">
+  <h2>查詢條件</h2>
+  <form method="get" class="toolbar">
+    <div class="field">
+      <label for="tool">工具</label>
+      <select id="tool" name="tool">
+        {% for tool in tools %}
+          <option value="{{ tool }}" {% if selected_tool == tool %}selected{% endif %}>{{ tool }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="sentiment">情緒</label>
+      <select id="sentiment" name="sentiment">
+        {% for sentiment in sentiments %}
+          <option value="{{ sentiment }}" {% if selected_sentiment == sentiment %}selected{% endif %}>{{ sentiment }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="start_date">起始日期</label>
+      <input id="start_date" name="start_date" type="date" value="{{ start_date|date:'Y-m-d' }}">
+    </div>
+
+    <div class="field">
+      <label for="end_date">結束日期</label>
+      <input id="end_date" name="end_date" type="date" value="{{ end_date|date:'Y-m-d' }}">
+    </div>
+
+    <div class="field">
+      <label for="keyword">關鍵字</label>
+      <input id="keyword" name="keyword" type="text" value="{{ keyword }}" placeholder="例如 OpenAI、模型、監管">
+    </div>
+
+    <div class="field" style="align-self:end; flex: 0 1 auto; min-width: 130px;">
+      <button class="btn" type="submit">查詢</button>
+    </div>
+
+    <div class="field" style="align-self:end; flex: 0 1 auto; min-width: 130px;">
+      <a class="btn btn-secondary" href="{% url 'app_news_db:news_db' %}">清除</a>
+    </div>
+  </form>
+  <p class="news-toolbar-note">目前顯示符合條件的 {{ total_count }} 筆資料。</p>
+</section>
+
+<section class="section-card">
+  <h2>新聞列表</h2>
+
+  <div class="news-list">
+    {% for news in page_obj %}
+    <article class="news-card">
+      <div class="news-card-meta">
+        <span class="badge">{{ news.date|date:"Y-m-d H:i" }}</span>
+        <span class="badge badge-tool">{{ news.tool }}</span>
+        {% if news.sentiment == "正面" %}
+          <span class="badge badge-positive">正面</span>
+        {% elif news.sentiment == "負面" %}
+          <span class="badge badge-negative">負面</span>
+        {% else %}
+          <span class="badge badge-neutral">{{ news.sentiment|default:"未標註" }}</span>
+        {% endif %}
+      </div>
+
+      <h3 class="news-title">
+        <a href="{{ news.link }}" target="_blank" rel="noopener noreferrer">{{ news.title }}</a>
+      </h3>
+
+      <p class="news-summary">{{ news.content|truncatechars:150 }}</p>
+
+      {% if news.keywords %}
+      <div class="keyword-box">
+        <strong>關鍵字：</strong>{{ news.keywords }}
+      </div>
+      {% endif %}
+
+      <div class="news-card-footer">
+        <span class="footer-note">來源：{{ news.source|default:"未標註" }}</span>
+        <a class="btn" href="{{ news.link }}" target="_blank" rel="noopener noreferrer">查看原文</a>
+      </div>
+    </article>
+    {% empty %}
+    <div class="empty-state">
+      <h3>目前查無資料</h3>
+      <p>請嘗試放寬日期、工具、情緒或關鍵字條件。</p>
+    </div>
+    {% endfor %}
+  </div>
+
+  {% if page_obj.paginator.num_pages > 1 %}
+  <div class="pagination-bar">
+    {% if page_obj.has_previous %}
+      <a class="btn btn-secondary" href="?page={{ page_obj.previous_page_number }}&tool={{ selected_tool }}&sentiment={{ selected_sentiment }}&keyword={{ keyword }}&start_date={{ start_date|date:'Y-m-d' }}&end_date={{ end_date|date:'Y-m-d' }}">上一頁</a>
+    {% endif %}
+    <span class="footer-note">第 {{ page_obj.number }} / {{ page_obj.paginator.num_pages }} 頁</span>
+    {% if page_obj.has_next %}
+      <a class="btn btn-secondary" href="?page={{ page_obj.next_page_number }}&tool={{ selected_tool }}&sentiment={{ selected_sentiment }}&keyword={{ keyword }}&start_date={{ start_date|date:'Y-m-d' }}&end_date={{ end_date|date:'Y-m-d' }}">下一頁</a>
+    {% endif %}
+  </div>
+  {% endif %}
+</section>
+{% endblock %}

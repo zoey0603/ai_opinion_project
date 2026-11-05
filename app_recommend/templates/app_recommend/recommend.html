@@ -1,0 +1,405 @@
+{% extends "base.html" %}
+{% block content %}
+
+<style>
+  .hero {
+    margin-bottom: 28px;
+  }
+
+  .hero h1 {
+    margin: 0 0 10px;
+    font-size: clamp(1.8rem, 2.6vw, 2.4rem);
+    color: #1f2937;
+  }
+
+  .lead {
+    margin: 0;
+    color: #6b7280;
+    line-height: 1.7;
+  }
+
+  .section-card {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+    margin-bottom: 24px;
+  }
+
+  .toolbar {
+    display: flex;
+    gap: 16px;
+    align-items: end;
+    flex-wrap: wrap;
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 220px;
+    flex: 1;
+  }
+
+  .field label {
+    font-weight: 700;
+    color: #374151;
+  }
+
+  .field select {
+    height: 46px;
+    border: 1px solid #d1d5db;
+    border-radius: 12px;
+    padding: 0 14px;
+    font-size: 15px;
+    background: #fff;
+  }
+
+  .btn {
+    height: 46px;
+    padding: 0 20px;
+    border: none;
+    border-radius: 12px;
+    background: #2563eb;
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s ease;
+  }
+
+  .btn:hover {
+    background: #1d4ed8;
+    transform: translateY(-1px);
+  }
+
+  .result-card {
+    margin-top: 24px;
+    background: linear-gradient(135deg, #eff6ff, #ffffff);
+    border: 1px solid #bfdbfe;
+    border-radius: 18px;
+    padding: 20px;
+  }
+
+  .result-grid {
+    display: grid;
+    gap: 12px;
+  }
+
+  .result-item {
+    margin: 0;
+    color: #374151;
+    line-height: 1.7;
+  }
+
+  .keyword-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 12px;
+  }
+
+  .keyword-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: #eef2ff;
+    color: #4338ca;
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  .news-grid {
+    display: grid;
+    gap: 18px;
+    margin-top: 16px;
+  }
+
+  .news-card {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-left: 6px solid #2563eb;
+    border-radius: 18px;
+    padding: 20px;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .news-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 28px rgba(15, 23, 42, 0.08);
+  }
+
+  .news-card.chatgpt {
+    border-left-color: #3b82f6;
+    background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+  }
+
+  .news-card.gemini {
+    border-left-color: #ec4899;
+    background: linear-gradient(180deg, #ffffff 0%, #fff8fc 100%);
+  }
+
+  .news-card.claude {
+    border-left-color: #f59e0b;
+    background: linear-gradient(180deg, #ffffff 0%, #fffaf3 100%);
+  }
+
+  .news-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .tool-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 7px 12px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 800;
+  }
+
+  .tool-badge.chatgpt {
+    background: #dbeafe;
+    color: #1d4ed8;
+  }
+
+  .tool-badge.gemini {
+    background: #fce7f3;
+    color: #db2777;
+  }
+
+  .tool-badge.claude {
+    background: #ffedd5;
+    color: #ea580c;
+  }
+
+  .score-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 7px 12px;
+    border-radius: 999px;
+    background: #f3f4f6;
+    color: #374151;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .news-title {
+    margin: 0 0 14px;
+    font-size: 1.12rem;
+    line-height: 1.6;
+    color: #111827;
+  }
+
+  .meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .meta-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 12px;
+    border-radius: 999px;
+    background: #f3f4f6;
+    color: #4b5563;
+    font-size: 14px;
+  }
+
+  .meta-pill a {
+    color: #2563eb;
+    text-decoration: none;
+  }
+
+  .meta-pill a:hover {
+    text-decoration: underline;
+  }
+
+  .matched-block {
+    margin: 14px 0;
+    padding: 14px;
+    border-radius: 14px;
+    background: #f8fafc;
+    border: 1px dashed #cbd5e1;
+  }
+
+  .matched-title {
+    margin: 0 0 10px;
+    font-size: 14px;
+    font-weight: 800;
+    color: #334155;
+  }
+
+  .matched-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .matched-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: #dbeafe;
+    color: #1d4ed8;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .news-summary {
+    margin: 0;
+    color: #4b5563;
+    line-height: 1.8;
+  }
+
+  @media (max-width: 768px) {
+    .section-card {
+      padding: 18px;
+      border-radius: 16px;
+    }
+
+    .news-card {
+      padding: 16px;
+      border-radius: 16px;
+    }
+
+    .news-title {
+      font-size: 1rem;
+    }
+
+    .toolbar {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .field {
+      min-width: 100%;
+    }
+
+    .btn {
+      width: 100%;
+    }
+  }
+</style>
+
+<section class="hero">
+  <h1>AI 工具推薦器</h1>
+  <p class="lead">依照你的需求快速推薦適合的 AI 工具，並顯示相關新聞、命中關鍵字與比較結果。</p>
+</section>
+
+<section class="section-card">
+  <form method="get" class="toolbar">
+    <div class="field">
+      <label for="task">請選擇需求</label>
+      <select id="task" name="task">
+        {% for t in tasks %}
+          <option value="{{ t }}" {% if t == task %}selected{% endif %}>{{ t }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="field" style="flex:0 0 auto; min-width:140px;">
+      <button class="btn" type="submit">開始推薦</button>
+    </div>
+  </form>
+
+  {% if result %}
+    <div class="result-card">
+      <div class="result-grid">
+        <p class="result-item"><strong>需求：</strong>{{ result.task }}</p>
+        <p class="result-item"><strong>推薦工具：</strong>{{ result.tool }}</p>
+        <p class="result-item"><strong>推薦原因：</strong>{{ result.reason }}</p>
+      </div>
+    </div>
+
+    {% if result.ranking %}
+      <div class="section-card" style="margin-top:20px;">
+        <h2>工具排名</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>工具</th>
+              <th>關聯分數</th>
+              <th>命中篇數</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for row in result.ranking %}
+            <tr>
+              <td>{{ row.tool }}</td>
+              <td>{{ row.score }}</td>
+              <td>{{ row.count }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% endif %}
+
+    {% if result.related_keywords %}
+      <div class="section-card" style="margin-top:20px;">
+        <h2>相關熱門字</h2>
+        <div class="keyword-tags">
+          {% for kw in result.related_keywords %}
+            <span class="keyword-tag"># {{ kw }}</span>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+
+    {% if result.news_examples %}
+      <div class="section-card" style="margin-top:20px;">
+        <h2>代表新聞</h2>
+        <div class="news-grid">
+          {% for news in result.news_examples %}
+            <article class="news-card
+              {% if news.tool == 'ChatGPT' %}chatgpt{% elif news.tool == 'Gemini' %}gemini{% elif news.tool == 'Claude' %}claude{% endif %}">
+              
+              <div class="news-top">
+                <span class="tool-badge
+                  {% if news.tool == 'ChatGPT' %}chatgpt{% elif news.tool == 'Gemini' %}gemini{% elif news.tool == 'Claude' %}claude{% endif %}">
+                  {{ news.tool }}
+                </span>
+
+                <span class="score-badge">關聯分數：{{ news.match_score }}</span>
+              </div>
+
+              <h3 class="news-title">{{ news.title }}</h3>
+
+              <div class="meta-row">
+                <span class="meta-pill">📅 {{ news.date }}</span>
+                <span class="meta-pill">📰 {{ news.source }}</span>
+                <span class="meta-pill">🔗 <a href="{{ news.link }}" target="_blank">查看原文</a></span>
+              </div>
+
+              {% if news.matched_keywords %}
+                <div class="matched-block">
+                  <p class="matched-title">命中的相關關鍵字</p>
+                  <div class="matched-tags">
+                    {% for kw in news.matched_keywords %}
+                      <span class="matched-tag">{{ kw }}</span>
+                    {% endfor %}
+                  </div>
+                </div>
+              {% endif %}
+
+              <p class="news-summary">{{ news.content_short }}...</p>
+            </article>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+  {% endif %}
+</section>
+
+{% endblock %}
